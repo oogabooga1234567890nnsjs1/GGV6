@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background: radial-gradient(circle at top, #22164d 0%, #10163e 35%, #040b1a 100%);
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.galaxy-text,
+.galaxy-text1 {
+    margin: 0;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #ef92a2, #e474a2, #7857ff, #00c6ff);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: galaxyShift 4s ease infinite, stellarGlow 3s ease-in-out infinite alternate;
+}
+
+.galaxy-text {
+    font-size: clamp(3rem, 8vw, 6rem);
+}
+
+.galaxy-text1 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+}
+
+@keyframes galaxyShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes stellarGlow {
+    0% {
+        filter: drop-shadow(0 0 10px rgba(120, 87, 255, 0.4));
+    }
+
+    100% {
+        filter: drop-shadow(0 0 25px rgba(0, 198, 255, 0.8));
+    }
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: chocolate;
+    color: cornsilk;
+    border: 2px solid brown;
+    cursor: pointer;
+    align-self: center;
+}
+
+.cookie-btn {
+    display: inline-block;
+    margin: 0.75rem;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.cookie-btn:hover {
+    background-color: #45a049;
+}
