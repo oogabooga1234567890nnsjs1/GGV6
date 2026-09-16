@@ -157,8 +157,9 @@ body::before {
 
 .staff-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(220px, 1fr));
+    grid-template-columns: minmax(260px, 720px);
     gap: 1.2rem;
+    justify-content: center;
 }
 
 .staff-card {
@@ -171,6 +172,10 @@ body::before {
     border-radius: 20px;
     background: linear-gradient(180deg, rgba(11, 22, 36, 0.88), rgba(8, 15, 29, 0.7));
     box-shadow: 0 14px 30px rgba(9, 17, 31, 0.4), inset 0 0 20px rgba(112, 247, 255, 0.05);
+}
+
+.single-card {
+    padding: 1.5rem;
 }
 
 .card-body {
