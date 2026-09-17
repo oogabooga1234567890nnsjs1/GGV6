@@ -7,8 +7,14 @@
   },
   {
     "username": "Aidan",
-    "salt": "e6f1bf1e38edc6b0e90f40e17e239bec",
-    "passwordHash": "cfcfa82b10e6c47b371927d939a295a0549217ced6d768d347fed70ac6576c034bc1c7775381545ace470d69a77f4eaaadb4818326fcfa9e7300bebc738bd746",
+    "salt": "978473f4c3fe4d7a65dfd12af590c2bc",
+    "passwordHash": "f26fb7a66fe42d297b676a4bf23583cdab9fc23790992fa174c1659039bc0e3cf3695a82f2bb65577a057cce5f9603d4472c088206217a3980e0736f8c4c0ad5",
     "createdAt": "2026-09-17T12:27:55.761Z"
+  },
+  {
+    "username": "test",
+    "salt": "c7cc14c165a304d1c29425efc32f6d17",
+    "passwordHash": "8d1a9e080bcc2074d7d1f3c24844404347a53b4e75237a245c4e35bcfcb02790cdc5d1cf1f8a16326aa786fa5068c8cca15323f5755ec552acb23cc65b29daff",
+    "createdAt": "2026-09-17T14:03:01.740Z"
   }
 ]

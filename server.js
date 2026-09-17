@@ -63,6 +63,10 @@ function sessionUser(request) {
     return session.username;
 }
 
+function isStaffUser(username) {
+    return username === 'Aidan';
+}
+
 function sendJson(response, status, data, extraHeaders = {}) {
     response.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', ...extraHeaders });
     response.end(JSON.stringify(data));
@@ -147,6 +151,7 @@ const server = http.createServer(async (request, response) => {
     if (url.pathname === '/api/chat' && request.method === 'GET') {
         const username = sessionUser(request);
         if (!username) return sendJson(response, 401, { error: 'Log in to use staff chat.' });
+        if (!isStaffUser(username)) return sendJson(response, 403, { error: 'Only Aidan can use staff chat.' });
         const after = Number(url.searchParams.get('after')) || 0;
         const messages = readMessages();
         return sendJson(response, 200, { messages: after ? messages.filter((message) => message.id > after) : messages.slice(-100) });
@@ -155,6 +160,7 @@ const server = http.createServer(async (request, response) => {
     if (url.pathname === '/api/chat' && request.method === 'POST') {
         const username = sessionUser(request);
         if (!username) return sendJson(response, 401, { error: 'Log in to use staff chat.' });
+        if (!isStaffUser(username)) return sendJson(response, 403, { error: 'Only Aidan can use staff chat.' });
         try {
             const { text } = await readBody(request);
             const messageText = typeof text === 'string' ? text.trim() : '';
