@@ -1,0 +1,14 @@
+[
+  {
+    "username": "amalakarus",
+    "salt": "a1bb094c898a6ca544d03bc8c5422a41",
+    "passwordHash": "f020445ed10788fe0ca2c71df514f26b9ae6dc4638264737c159d299891b7b4feefc116bd6ee0c599f45da5a6fce1258db917127c786a937c16e53f3299bfa04",
+    "createdAt": "2026-09-17T12:26:20.618Z"
+  },
+  {
+    "username": "Aidan",
+    "salt": "e6f1bf1e38edc6b0e90f40e17e239bec",
+    "passwordHash": "cfcfa82b10e6c47b371927d939a295a0549217ced6d768d347fed70ac6576c034bc1c7775381545ace470d69a77f4eaaadb4818326fcfa9e7300bebc738bd746",
+    "createdAt": "2026-09-17T12:27:55.761Z"
+  }
+]

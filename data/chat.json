@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1789648228501,
+    "username": "Aidan",
+    "text": "hello",
+    "createdAt": "2026-09-17T12:30:28.501Z"
+  },
+  {
+    "id": 1789648252104,
+    "username": "Aidan",
+    "text": "hi",
+    "createdAt": "2026-09-17T12:30:52.104Z"
+  },
+  {
+    "id": 1789648271506,
+    "username": "Aidan",
+    "text": "test",
+    "createdAt": "2026-09-17T12:31:11.506Z"
+  },
+  {
+    "id": 1789648280663,
+    "username": "Aidan",
+    "text": "hello",
+    "createdAt": "2026-09-17T12:31:20.663Z"
+  }
+]

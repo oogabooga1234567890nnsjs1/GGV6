@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGV6 Staff Chat</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+    <main class="chat-shell">
+        <header class="chat-header">
+            <div>
+                <p class="eyebrow">Private workspace</p>
+                <h1>Staff Chat</h1>
+                <p class="subtitle">A shared room for the people building GGV6.</p>
+            </div>
+            <a class="back-link" href="index.html">Back to arcade</a>
+        </header>
+
+        <section class="chat-panel" aria-label="Staff chat">
+            <div class="connection" id="connection">Connecting...</div>
+            <div class="messages" id="messages" aria-live="polite"></div>
+            <form class="message-form" id="message-form">
+                <label class="sr-only" for="message">Message</label>
+                <input id="message" name="message" maxlength="500" placeholder="Write a message..." autocomplete="off" required>
+                <button type="submit" id="send-button">Send</button>
+            </form>
+            <p class="status" id="status" role="status" aria-live="polite"></p>
+        </section>
+    </main>
+    <script src="chat.js"></script>
+</body>
+</html>
