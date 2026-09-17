@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGV6 Store</title>
+    <link rel="stylesheet" href="store.css">
+</head>
+<body>
+    <div class="tron-scene" aria-hidden="true">
+        <div class="grid-layer grid-layer-back"></div>
+        <div class="grid-layer grid-layer-front"></div>
+        <div class="scanlines"></div>
+        <div class="vignette"></div>
+        <div class="starfield"></div>
+    </div>
+    <main class="store-shell">
+        <header class="store-header">
+            <a class="back-link" href="index.html">Back to arcade</a>
+            <div class="header-row">
+                <div>
+                    <p class="eyebrow">Cosmetic exchange</p>
+                    <h1>Mystery store</h1>
+                    <p class="subtitle">Open a box. Discover a new way to look like you.</p>
+                </div>
+                <div class="wallet"><span>Credits</span><strong id="credit-count">0</strong></div>
+            </div>
+        </header>
+        <section class="box-grid" id="box-grid" aria-label="Mystery boxes"></section>
+        <section class="drop-panel" id="drop-panel" aria-live="polite" hidden>
+            <p class="eyebrow">New cosmetic unlocked</p>
+            <div class="drop-preview" id="drop-preview"></div>
+            <h2 id="drop-name">Drop</h2>
+            <p id="drop-type"></p>
+            <a class="profile-link" href="profile.html">Customize your profile</a>
+        </section>
+        <p class="status" id="store-status" role="status" aria-live="polite"></p>
+    </main>
+    <script src="store.js"></script>
+</body>
+</html>

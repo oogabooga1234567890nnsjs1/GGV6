@@ -22,21 +22,74 @@
     </div>
 
     <main class="page-shell">
-        <header class="hero">
-            <p class="eyebrow">Arcade Collection</p>
-            <h1 class="galaxy-text">Goofy G@mes V6</h1>
-            <h2 class="galaxy-text1">Made by Aidan</h2>
-        </header>
+        <aside class="arcade-sidebar" aria-label="Arcade navigation">
+            <div class="sidebar-heading">
+                <p class="eyebrow">GGV6</p>
+                <strong>Arcade control</strong>
+            </div>
+            <nav class="button-row" aria-label="Game links">
+                <a href="drive-mad.html" class="cookie-btn game-link" data-game="Drive Mad">Drive Mad <span class="favorite-mark" aria-hidden="true">☆</span></a>
+                <a href="Your-Only-Move-is-Hustle/index.html" class="cookie-btn game-link" data-game="Your Only Move is Hustle">Your Only Move is Hustle <span class="favorite-mark" aria-hidden="true">☆</span></a>
+                <a href="staff.html" class="cookie-btn staff-btn">Creator</a>
+                <a href="public-chat.html" class="cookie-btn public-chat-btn">Public Chat</a>
+                <a href="chat.html" id="staff-chat-link" class="cookie-btn chat-btn owner-only" hidden>Staff Chat</a>
+                <a href="store.html" class="cookie-btn store-btn">Mystery Store</a>
+                <a href="owner.html" id="owner-link" class="cookie-btn owner-btn owner-only" hidden>Owner Commands</a>
+                <a href="auth.html" class="cookie-btn account-btn">Log in / Sign up</a>
+            </nav>
+            <section class="arcade-tools" aria-label="Arcade tools">
+                <label class="search-box" for="game-search">
+                    <span>Find a game</span>
+                    <input id="game-search" type="search" placeholder="Search..." autocomplete="off">
+                </label>
+                <div class="tool-actions">
+                    <button type="button" class="tool-button" id="random-game">Random game</button>
+                    <button type="button" class="tool-button" id="copy-arcade">Copy link</button>
+                    <button type="button" class="tool-button" id="theme-toggle">Focus theme</button>
+                    <button type="button" class="tool-button" id="motion-toggle">Reduce motion</button>
+                    <button type="button" class="tool-button logout-button" id="logout-button">Log out</button>
+                </div>
+                <p class="tool-status" id="tool-status" role="status" aria-live="polite"></p>
+            </section>
+        </aside>
 
-        <nav class="button-row" aria-label="Game links">
-            <a href="drive-mad.html" class="cookie-btn">Drive Mad</a>
-            <a href="Your-Only-Move-is-Hustle/index.html" class="cookie-btn">Your Only Move is Hustle</a>
-            <a href="staff.html" class="cookie-btn staff-btn">Creator</a>
-            <a href="chat.html" class="cookie-btn chat-btn">Staff Chat</a>
-            <a href="auth.html" class="cookie-btn account-btn">Log in / Sign up</a>
-        </nav>
+        <section class="arcade-main">
+            <header class="hero">
+                <p class="eyebrow">Arcade Collection</p>
+                <h1 class="galaxy-text">Goofy G@mes V6</h1>
+                <h2 class="galaxy-text1">Made by Aidan</h2>
+                <p class="welcome-line" id="welcome-line">Loading your arcade...</p>
+            </header>
+
+            <section class="home-profile" aria-label="Your profile">
+                <div class="home-profile-banner" id="home-profile-banner"></div>
+                <div class="home-profile-body">
+                    <div class="home-avatar avatar-core" id="home-avatar">?</div>
+                    <div class="home-profile-copy">
+                        <p class="eyebrow">Current player</p>
+                        <h2 id="home-profile-name">Loading...</h2>
+                        <p class="home-username" id="home-profile-username"></p>
+                        <p class="home-bio" id="home-profile-bio">Your profile is loading.</p>
+                        <a href="profile.html" class="profile-inline-link">Customize profile</a>
+                    </div>
+                    <div class="home-profile-stats">
+                        <div><span>Level</span><strong id="home-level">1</strong></div>
+                        <div><span>Credits</span><strong id="home-credits">0</strong></div>
+                        <div class="home-xp"><span id="home-xp-label">0 / 100 XP</span><i id="home-xp-bar"></i></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="arcade-status" aria-label="Arcade status">
+                <span id="favorite-count">0 favorites</span>
+                <span id="recent-game">No recent game</span>
+                <span id="session-time">Session active</span>
+            </section>
+            <p class="credit-balance" id="credit-balance" aria-live="polite">Credits loading...</p>
+        </section>
     </main>
     <script src="auth-guard.js"></script>
+    <script src="arcade-features.js"></script>
 </body>
 
 </html>

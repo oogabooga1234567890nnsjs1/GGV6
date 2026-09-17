@@ -27,15 +27,15 @@ async function loadMessages() {
     if (loading) return;
     loading = true;
     try {
-        const response = await fetch(`/api/chat?after=${lastMessageId}`, { cache: 'no-store' });
+        const response = await fetch(`/api/public-chat?after=${lastMessageId}`, { cache: 'no-store' });
         if (response.status === 401) return window.location.replace('auth.html');
-        if (response.status === 403) return window.location.replace('index.html');
-        if (!response.ok) throw new Error('Chat unavailable');
+        if (!response.ok) throw new Error('Public chat unavailable');
         const result = await response.json();
         if (lastMessageId === 0) messagesElement.replaceChildren();
         addMessages(result.messages);
         connection.textContent = 'Connected';
         connection.className = 'connection online';
+        document.body.hidden = false;
     } catch {
         connection.textContent = 'Connection lost. Retrying...';
         connection.className = 'connection offline';
@@ -51,7 +51,7 @@ messageForm.addEventListener('submit', async (event) => {
     sendButton.disabled = true;
     status.textContent = '';
     try {
-        const response = await fetch('/api/chat', {
+        const response = await fetch('/api/public-chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text })

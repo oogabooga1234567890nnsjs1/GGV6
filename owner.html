@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGV6 Owner Commands</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="owner.css">
+</head>
+<body hidden>
+    <div class="tron-scene" aria-hidden="true">
+        <div class="grid-layer grid-layer-back"></div>
+        <div class="grid-layer grid-layer-front"></div>
+        <div class="scanlines"></div>
+        <div class="vignette"></div>
+        <div class="starfield"></div>
+    </div>
+    <main class="owner-shell">
+        <header class="owner-header">
+            <a class="back-link" href="index.html">Back to arcade</a>
+            <p class="eyebrow">Aidan only</p>
+            <h1>Owner commands</h1>
+            <p class="subtitle">Manage player credits and cosmetic inventory from one private control panel.</p>
+        </header>
+        <section class="owner-layout" aria-label="Owner commands">
+            <form class="command-panel" id="grant-form">
+                <div class="panel-heading">
+                    <p class="eyebrow">Grant command</p>
+                    <h2>Give rewards</h2>
+                </div>
+                <label for="target-user">Player</label>
+                <select id="target-user" required></select>
+                <p class="target-balance" id="target-balance"></p>
+                <label for="credit-amount">Credits to give</label>
+                <input id="credit-amount" type="number" min="0" max="1000000" step="1" placeholder="0">
+                <label for="experience-amount">Experience to give</label>
+                <input id="experience-amount" type="number" min="0" max="1000000" step="1" placeholder="0">
+                <label for="cosmetic-item">Cosmetic to give</label>
+                <select id="cosmetic-item">
+                    <option value="">No cosmetic</option>
+                </select>
+                <button class="primary-button" type="submit" id="grant-button">Run command</button>
+                <p class="status" id="command-status" role="status" aria-live="polite"></p>
+            </form>
+            <aside class="command-help">
+                <p class="eyebrow">Owner access</p>
+                <h2>Private tools</h2>
+                <p>Credits and cosmetics are granted directly to the selected account and saved immediately.</p>
+                <div class="command-rule"><span>Owner</span><strong>Aidan</strong></div>
+                <div class="command-rule"><span>Chat access</span><strong>Enabled</strong></div>
+            </aside>
+        </section>
+    </main>
+    <script src="owner.js"></script>
+</body>
+</html>

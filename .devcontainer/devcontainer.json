@@ -13,6 +13,14 @@
 				"nikhilmjeby.black-box"
 			]
 		}
+	},
+	"forwardPorts": [4000],
+	"portsAttributes": {
+		"4000": {
+			"label": "GGV6 web app",
+			"onAutoForward": "openBrowser",
+			"visibility": "public"
+		}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.

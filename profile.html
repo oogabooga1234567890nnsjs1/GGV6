@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGV6 Profile</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div class="tron-scene" aria-hidden="true">
+        <div class="grid-layer grid-layer-back"></div>
+        <div class="grid-layer grid-layer-front"></div>
+        <div class="scanlines"></div>
+        <div class="vignette"></div>
+        <div class="starfield"></div>
+    </div>
+
+    <main class="profile-shell">
+        <header class="profile-header">
+            <a class="back-link" href="index.html">Back to arcade</a>
+            <p class="eyebrow">Player profile</p>
+            <h1>Make it yours.</h1>
+            <p class="subtitle">Shape your arcade identity and keep your credits ready for what comes next.</p>
+        </header>
+
+        <section class="profile-layout" aria-label="Profile settings">
+            <article class="preview-panel">
+                <div class="avatar avatar-core" id="avatar">?</div>
+                <p class="profile-label">Current identity</p>
+                <h2 class="profile-name name-default" id="preview-name">Loading...</h2>
+                <p class="username" id="preview-username"></p>
+                <p class="bio" id="preview-bio">Your bio will appear here.</p>
+                <div class="credit-display">
+                    <span>Credits</span>
+                    <strong id="credit-count">0</strong>
+                </div>
+                <div class="experience-display">
+                    <div><span>Level</span><strong id="level-count">1</strong></div>
+                    <div class="experience-track"><span id="experience-bar"></span></div>
+                    <small id="experience-label">0 / 100 XP</small>
+                </div>
+            </article>
+
+            <div class="settings-column">
+                <form class="settings-panel" id="profile-form">
+                    <div class="panel-heading">
+                        <p class="eyebrow">Customize</p>
+                        <h2>Profile details</h2>
+                    </div>
+                    <label for="display-name">Display name</label>
+                    <input id="display-name" name="displayName" maxlength="32" required>
+                    <label for="bio">Bio</label>
+                    <textarea id="bio" name="bio" maxlength="160" rows="4" placeholder="Tell the arcade who you are..."></textarea>
+                    <label for="avatar-color">Avatar color</label>
+                    <div class="color-row">
+                        <input id="avatar-color" name="avatarColor" type="color" value="#70f7ff">
+                        <span id="color-value">#70f7ff</span>
+                    </div>
+                    <label for="name-style">Name style</label>
+                    <select id="name-style" name="nameStyle"></select>
+                    <label for="avatar-style">Avatar style</label>
+                    <select id="avatar-style" name="avatarStyle"></select>
+                    <label for="banner-style">Profile banner</label>
+                    <select id="banner-style" name="bannerStyle"></select>
+                    <button class="primary-button" type="submit" id="save-button">Save profile</button>
+                    <p class="status" id="profile-status" role="status" aria-live="polite"></p>
+                </form>
+
+                <section class="credits-panel" aria-labelledby="credits-title">
+                    <div>
+                        <p class="eyebrow">Arcade wallet</p>
+                        <h2 id="credits-title">Daily credits</h2>
+                        <p>Claim 25 credits once each day.</p>
+                    </div>
+                    <button class="claim-button" id="claim-button" type="button">Claim +25</button>
+                    <p class="status" id="credits-status" role="status" aria-live="polite"></p>
+                </section>
+            </div>
+        </section>
+    </main>
+    <script src="profile.js"></script>
+</body>
+</html>
