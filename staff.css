@@ -104,12 +104,15 @@ body::before {
     background-position: 0 0, 60px 80px, 80px 30px;
     opacity: 0.8;
 }
+    animation: pageReveal .7s cubic-bezier(.2,.8,.2,1) both;
 
 .staff-shell {
     position: relative;
     z-index: 1;
     width: min(1100px, 100%);
     padding: clamp(1.5rem, 3vw, 3rem);
+@keyframes pageReveal { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; } }
     border: 1px solid var(--panel-border);
     border-radius: 28px;
     background: linear-gradient(180deg, rgba(9, 16, 32, 0.82), rgba(8, 14, 28, 0.64));

@@ -3,7 +3,7 @@
 html, body { margin: 0; min-height: 100%; min-height: 100vh; }
 body { display: grid; place-items: center; padding: 1rem; color: var(--text); font-family: "Segoe UI", Tahoma, sans-serif; background: radial-gradient(circle at 15% 10%, rgba(123,92,255,.32), transparent 28%), radial-gradient(circle at 85% 20%, rgba(44,200,255,.2), transparent 25%), linear-gradient(135deg, #020712, #09182a 48%, #030913); }
 body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .45; background: repeating-linear-gradient(to bottom, rgba(255,255,255,.025), rgba(255,255,255,.025) 1px, transparent 1px, transparent 4px); }
-.auth-shell { width: min(460px, 100%); position: relative; z-index: 1; }
+.auth-shell { width: min(460px, 100%); position: relative; z-index: 1; animation: pageReveal .65s cubic-bezier(.2,.8,.2,1) both; }
 .back-link { display: inline-block; margin-bottom: 1rem; color: var(--muted); text-decoration: none; }
 .back-link:hover { color: var(--cyan); }
 .auth-panel { padding: clamp(1.5rem, 5vw, 3rem); border: 1px solid rgba(112,247,255,.22); border-radius: 24px; background: rgba(8,15,30,.82); box-shadow: 0 24px 80px rgba(0,0,0,.45), inset 0 0 30px rgba(112,247,255,.05); backdrop-filter: blur(12px); }
@@ -22,3 +22,5 @@ input:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(112,247,255,
 .status.success { color: #8af7d6; }
 .status.error { color: #ff9eae; }
 @keyframes shift { 0%, 100% { background-position: 0%; } 50% { background-position: 100%; } }
+@keyframes pageReveal { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; } }
