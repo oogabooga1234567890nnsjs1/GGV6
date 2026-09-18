@@ -25,10 +25,11 @@ function populateUsers() {
 
 function populateCosmetics(cosmetics) {
     const options = [document.querySelector('#cosmetic-item option')];
-    Object.entries(cosmetics).forEach(([type, items]) => {
+    Object.entries(cosmetics || {}).forEach(([type, items]) => {
         const group = document.createElement('optgroup');
         group.label = type.replace('Styles', ' styles');
-        items.filter((item) => item.id !== 'default').forEach((item) => {
+        const safeItems = Array.isArray(items) ? items : [];
+        safeItems.filter((item) => item.id !== 'default').forEach((item) => {
             const option = document.createElement('option');
             option.value = `${type}:${item.id}`;
             option.textContent = `${item.label} · ${item.rarity}${item.ownerOnly ? ' · owner only' : ''}`;

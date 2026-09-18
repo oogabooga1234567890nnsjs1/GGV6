@@ -16,7 +16,6 @@ const SESSION_MAX_AGE = 1000 * 60 * 60 * 24 * 7;
 const cosmetics = {
     nameStyles: [
         { id: 'default', label: 'Classic', rarity: 'common', className: 'name-default' },
-        { id: 'aurora', label: 'Aurora', rarity: 'uncommon', className: 'name-aurora' },
         { id: 'sunset', label: 'Sunset Drive', rarity: 'rare', className: 'name-sunset' },
         { id: 'spectrum', label: 'Spectrum', rarity: 'epic', className: 'name-spectrum' },
         { id: 'prism', label: 'Prism Crown', rarity: 'legendary', className: 'name-prism' },
@@ -24,11 +23,12 @@ const cosmetics = {
         { id: 'void', label: 'VOID//SOVEREIGN', rarity: 'godly', className: 'name-void' },
         { id: 'overclock', label: 'OVERCLOCK//PRIME', rarity: 'godly', className: 'name-overclock' },
         { id: 'corrupted', label: 'CORRUPTED//ROOT', rarity: 'corrupted', className: 'name-corrupted' },
+        { id: 'galaxy', label: 'GALAXY//VOYAGER', rarity: 'Owner', className: 'name-galaxy', ownerOnly: true },
+        { id: 'orange-green-gradient', label: 'Orange + Green Gradient', rarity: 'Owner', className: 'name-orange-green-gradient', ownerOnly: true },
         { id: 'ascended', label: 'ASCENDED//ORIGIN', rarity: 'ascended', className: 'name-ascended', ownerOnly: true }
     ],
     avatarStyles: [
         { id: 'default', label: 'Core', rarity: 'common', className: 'avatar-core' },
-        { id: 'circuit', label: 'Circuit', rarity: 'uncommon', className: 'avatar-circuit' },
         { id: 'nebula', label: 'Nebula', rarity: 'rare', className: 'avatar-nebula' },
         { id: 'holo', label: 'Hologram', rarity: 'epic', className: 'avatar-holo' },
         { id: 'chromatic', label: 'Chromatic', rarity: 'legendary', className: 'avatar-chromatic' },
@@ -36,11 +36,11 @@ const cosmetics = {
         { id: 'void', label: 'Void Crown', rarity: 'godly', className: 'avatar-void' },
         { id: 'overclock', label: 'Overclock Core', rarity: 'godly', className: 'avatar-overclock' },
         { id: 'corrupted', label: 'Corrupted Core', rarity: 'corrupted', className: 'avatar-corrupted' },
+        { id: 'galaxy', label: 'Galaxy Core', rarity: 'Owner', className: 'avatar-galaxy', ownerOnly: true },
         { id: 'ascended', label: 'Origin Core', rarity: 'ascended', className: 'avatar-ascended', ownerOnly: true }
     ],
     bannerStyles: [
         { id: 'default', label: 'Midnight Grid', rarity: 'common', className: 'banner-default' },
-        { id: 'mintline', label: 'Mintline', rarity: 'uncommon', className: 'banner-mintline' },
         { id: 'sundown', label: 'Sundown', rarity: 'rare', className: 'banner-sundown' },
         { id: 'hyperdrive', label: 'Hyperdrive', rarity: 'epic', className: 'banner-hyperdrive' },
         { id: 'royalflux', label: 'Royal Flux', rarity: 'legendary', className: 'banner-royalflux' },
@@ -48,8 +48,28 @@ const cosmetics = {
         { id: 'void', label: 'Event Horizon', rarity: 'godly', className: 'banner-void' },
         { id: 'overclock', label: 'Overclock Grid', rarity: 'godly', className: 'banner-overclock' },
         { id: 'corrupted', label: 'System Collapse', rarity: 'corrupted', className: 'banner-corrupted' },
+        { id: 'galaxy', label: 'Galaxy Horizon', rarity: 'Owner', className: 'banner-galaxy', ownerOnly: true },
         { id: 'ascended', label: 'Origin Horizon', rarity: 'ascended', className: 'banner-ascended', ownerOnly: true }
+    ],
+    chatColors: [
+        { id: 'classic', label: 'Classic White', rarity: 'common', visual: { primary: '#edf9ff', secondary: '#d7e7ff' } },
+        { id: 'lumen', label: 'Lumen Cyan', rarity: 'rare', visual: { primary: '#70f7ff', secondary: '#4cc9ff' } },
+        { id: 'violet', label: 'Violet Pulse', rarity: 'epic', visual: { primary: '#d59cff', secondary: '#8c67ff' } },
+        { id: 'sunset', label: 'Sunset Ember', rarity: 'legendary', visual: { primary: '#ffb26d', secondary: '#ff5e7a' } },
+        { id: 'mint', label: 'Mint Circuit', rarity: 'legendary', visual: { primary: '#7ef7d8', secondary: '#36dca0' } },
+        { id: 'nova', label: 'Nova Glow', rarity: 'mythic', visual: { primary: '#ffd166', secondary: '#ff61d8' } },
+        { id: 'spectral', label: 'Spectral Prism', rarity: 'mythic', visual: { primary: '#a7f3ff', secondary: '#c282ff' } },
+        { id: 'void', label: 'Void Signal', rarity: 'godly', visual: { primary: '#9ac5ff', secondary: '#7a5cff' } },
+        { id: 'corrupted', label: 'Corrupted Fade', rarity: 'corrupted', visual: { primary: '#ff7aa2', secondary: '#5b3cf8' } },
+        { id: 'galaxy', label: 'Galaxy Drift', rarity: 'Owner', ownerOnly: true, visual: { primary: '#ffffff', secondary: '#8bd7ff' } },
+        { id: 'ascended', label: 'Ascended Aura', rarity: 'ascended', visual: { primary: '#fff0af', secondary: '#87f7ff' }, ownerOnly: true }
     ]
+};
+
+const chatColorStyle = (itemId) => {
+    const item = cosmeticById('chatColors', itemId);
+    if (!item) return '#edf9ff';
+    return item.visual?.primary || '#edf9ff';
 };
 
 const professionalThemes = [
@@ -96,10 +116,10 @@ extraBannerThemes.forEach(([id, label, primary, secondary]) => cosmetics.bannerS
 
 const storeBoxes = [
     { id: 'starter', label: 'Starter Box', tier: 'Common', cost: 50, drops: [
-        { type: 'nameStyles', id: 'aurora', rarity: 'uncommon', odds: 55 },
-        { type: 'avatarStyles', id: 'circuit', rarity: 'uncommon', odds: 30 },
-        { type: 'bannerStyles', id: 'mintline', rarity: 'uncommon', odds: 14 },
-        { type: 'nameStyles', id: 'sunset', rarity: 'rare', odds: 1 }
+        { type: 'nameStyles', id: 'sunset', rarity: 'rare', odds: 55 },
+        { type: 'avatarStyles', id: 'nebula', rarity: 'rare', odds: 30 },
+        { type: 'bannerStyles', id: 'sundown', rarity: 'rare', odds: 14 },
+        { type: 'nameStyles', id: 'spectrum', rarity: 'epic', odds: 1 }
     ] },
     { id: 'neon', label: 'Neon Box', tier: 'Rare', cost: 100, drops: [
         { type: 'nameStyles', id: 'sunset', rarity: 'rare', odds: 55 },
@@ -124,19 +144,12 @@ const storeBoxes = [
         { type: 'avatarStyles', id: 'chromatic', rarity: 'legendary', odds: 30 },
         { type: 'bannerStyles', id: 'royalflux', rarity: 'legendary', odds: 19 },
         { type: 'nameStyles', id: 'glitch', rarity: 'godly', odds: 1 }
-    ] },
-    { id: 'cursed', label: 'Cursed Crate', tier: 'Godly', cost: 1000, drops: [
-        { type: 'nameStyles', id: 'prism', rarity: 'legendary', odds: 45 },
-        { type: 'avatarStyles', id: 'chromatic', rarity: 'legendary', odds: 30 },
-        { type: 'bannerStyles', id: 'royalflux', rarity: 'legendary', odds: 24.998 },
-        { type: 'cursedCrate', id: 'glitch-bundle', label: 'GODLY GLITCH//ERROR bundle', rarity: 'godly', className: 'cursed-crate', odds: 0.001 }
-        , { type: 'corruptedCrate', id: 'corrupted-bundle', label: 'CORRUPTED CRATE', rarity: 'corrupted', className: 'corrupted-crate', odds: 0.001 }
     ] }
 ];
 
 storeBoxes.push(
     { id: 'pulse', label: 'Pulse Cache', tier: 'Uncommon', cost: 75, drops: [
-        { type: 'nameStyles', id: 'aurora', rarity: 'uncommon', odds: 50 }, { type: 'avatarStyles', id: 'circuit', rarity: 'uncommon', odds: 30 }, { type: 'bannerStyles', id: 'mintline', rarity: 'uncommon', odds: 19 }, { type: 'nameStyles', id: 'sunset', rarity: 'rare', odds: 1 }
+        { type: 'nameStyles', id: 'sunset', rarity: 'rare', odds: 50 }, { type: 'avatarStyles', id: 'nebula', rarity: 'rare', odds: 30 }, { type: 'bannerStyles', id: 'sundown', rarity: 'rare', odds: 19 }, { type: 'nameStyles', id: 'spectrum', rarity: 'epic', odds: 1 }
     ] },
     { id: 'prism', label: 'Prism Case', tier: 'Rare', cost: 125, drops: [
         { type: 'nameStyles', id: 'sunset', rarity: 'rare', odds: 50 }, { type: 'avatarStyles', id: 'nebula', rarity: 'rare', odds: 30 }, { type: 'bannerStyles', id: 'sundown', rarity: 'rare', odds: 19 }, { type: 'nameStyles', id: 'spectrum', rarity: 'epic', odds: 1 }
@@ -234,14 +247,17 @@ function isStaffUser(username) {
 }
 
 function ensureCosmetics(user) {
-    user.inventory = user.inventory || { nameStyles: ['default'], avatarStyles: ['default'], bannerStyles: ['default'] };
-    user.inventory.nameStyles = user.inventory.nameStyles || ['default'];
-    user.inventory.avatarStyles = user.inventory.avatarStyles || ['default'];
-    user.inventory.bannerStyles = user.inventory.bannerStyles || ['default'];
-    user.equipped = user.equipped || { nameStyle: 'default', avatarStyle: 'default', bannerStyle: 'default' };
+    if (!user) return;
+    user.inventory = user.inventory || { nameStyles: ['default'], avatarStyles: ['default'], bannerStyles: ['default'], chatColors: ['classic'] };
+    user.inventory.nameStyles = Array.isArray(user.inventory.nameStyles) && user.inventory.nameStyles.length ? user.inventory.nameStyles : ['default'];
+    user.inventory.avatarStyles = Array.isArray(user.inventory.avatarStyles) && user.inventory.avatarStyles.length ? user.inventory.avatarStyles : ['default'];
+    user.inventory.bannerStyles = Array.isArray(user.inventory.bannerStyles) && user.inventory.bannerStyles.length ? user.inventory.bannerStyles : ['default'];
+    user.inventory.chatColors = Array.isArray(user.inventory.chatColors) && user.inventory.chatColors.length ? user.inventory.chatColors : ['classic'];
+    user.equipped = user.equipped || { nameStyle: 'default', avatarStyle: 'default', bannerStyle: 'default', chatColor: 'classic' };
     user.equipped.nameStyle = user.equipped.nameStyle || 'default';
     user.equipped.avatarStyle = user.equipped.avatarStyle || 'default';
     user.equipped.bannerStyle = user.equipped.bannerStyle || 'default';
+    user.equipped.chatColor = user.equipped.chatColor || 'classic';
 }
 
 function ensureOwnerCosmetics(user) {
@@ -380,12 +396,22 @@ function serveStatic(request, response, pathname) {
 }
 
 const startupUsers = readUsers();
-const ownerUser = startupUsers.find((user) => isStaffUser(user.username));
-if (ownerUser) {
-    const beforeInventory = JSON.stringify(ownerUser.inventory || {});
-    ensureOwnerCosmetics(ownerUser);
-    if (JSON.stringify(ownerUser.inventory) !== beforeInventory) writeUsers(startupUsers);
-}
+const retiredCosmeticIds = {
+    nameStyles: new Set(['aurora']),
+    avatarStyles: new Set(['circuit']),
+    bannerStyles: new Set(['mintline'])
+};
+let startupUsersChanged = false;
+startupUsers.forEach((user) => {
+    const beforeUser = JSON.stringify(user);
+    ensureCosmetics(user);
+    Object.entries(retiredCosmeticIds).forEach(([type, ids]) => {
+        user.inventory[type] = user.inventory[type].filter((id) => !ids.has(id));
+    });
+    if (isStaffUser(user.username)) ensureOwnerCosmetics(user);
+    if (JSON.stringify(user) !== beforeUser) startupUsersChanged = true;
+});
+if (startupUsersChanged) writeUsers(startupUsers);
 
 const server = http.createServer(async (request, response) => {
     const url = new URL(request.url, `http://${request.headers.host || 'localhost'}`);
@@ -454,7 +480,7 @@ const server = http.createServer(async (request, response) => {
         const user = userForRequest(request);
         if (!user) return sendJson(response, 401, { error: 'Log in to update your profile.' });
         try {
-            const { displayName, bio, avatarColor, nameStyle, avatarStyle, bannerStyle } = await readBody(request);
+            const { displayName, bio, avatarColor, nameStyle, avatarStyle, bannerStyle, chatColor } = await readBody(request);
             if (typeof displayName !== 'string' || displayName.trim().length < 1 || displayName.trim().length > 32) {
                 return sendJson(response, 400, { error: 'Display name must be between 1 and 32 characters.' });
             }
@@ -468,11 +494,12 @@ const server = http.createServer(async (request, response) => {
             const requestedStyles = [
                 ['nameStyle', 'nameStyles', nameStyle],
                 ['avatarStyle', 'avatarStyles', avatarStyle],
-                ['bannerStyle', 'bannerStyles', bannerStyle]
+                ['bannerStyle', 'bannerStyles', bannerStyle],
+                ['chatColor', 'chatColors', chatColor]
             ];
             for (const [field, type, value] of requestedStyles) {
                 if (value !== undefined && (typeof value !== 'string' || !user.inventory[type].includes(value))) {
-                    return sendJson(response, 400, { error: `You do not own that ${field.replace('Style', ' style')}.` });
+                    return sendJson(response, 400, { error: `You do not own that ${field.replace('Style', ' style').replace('Color', ' color')}.` });
                 }
             }
             const users = readUsers();
@@ -484,6 +511,7 @@ const server = http.createServer(async (request, response) => {
             if (nameStyle !== undefined) storedUser.equipped.nameStyle = nameStyle;
             if (avatarStyle !== undefined) storedUser.equipped.avatarStyle = avatarStyle;
             if (bannerStyle !== undefined) storedUser.equipped.bannerStyle = bannerStyle;
+            if (chatColor !== undefined) storedUser.equipped.chatColor = chatColor;
             if (!Number.isFinite(storedUser.credits)) storedUser.credits = 100;
             if (!Object.hasOwn(storedUser, 'lastCreditClaim')) storedUser.lastCreditClaim = null;
             writeUsers(users);
@@ -521,7 +549,7 @@ const server = http.createServer(async (request, response) => {
         try {
             const { boxId } = await readBody(request);
             const box = storeBoxes.find((entry) => entry.id === boxId);
-            if (!box) return sendJson(response, 400, { error: 'That mystery box does not exist.' });
+            if (!box || ['cursed', 'corrupted'].includes(box.id)) return sendJson(response, 400, { error: 'That mystery box is not available for direct purchase.' });
             ensureCosmetics(user);
             const availableDrops = box.drops.filter((drop) => {
                 if (drop.type === 'cursedCrate' || drop.type === 'corruptedCrate') return true;
@@ -623,10 +651,19 @@ const server = http.createServer(async (request, response) => {
             if (!messageText || messageText.length > 500) {
                 return sendJson(response, 400, { error: 'Messages must be between 1 and 500 characters.' });
             }
-            const message = { id: Date.now(), username, text: messageText, createdAt: new Date().toISOString() };
-            const messages = [...readMessages(), message].slice(-500);
             const users = readUsers();
             const user = users.find((entry) => entry.username === username);
+            ensureCosmetics(user);
+            const chatColor = cosmeticById('chatColors', user.equipped.chatColor);
+            const message = {
+                id: Date.now(),
+                username,
+                text: messageText,
+                color: chatColor ? (chatColor.visual?.primary || '#edf9ff') : '#edf9ff',
+                chatColor: user.equipped.chatColor || 'classic',
+                createdAt: new Date().toISOString()
+            };
+            const messages = [...readMessages(), message].slice(-500);
             addExperience(user, 5);
             writeUsers(users);
             writeMessages(messages);
@@ -653,10 +690,19 @@ const server = http.createServer(async (request, response) => {
             if (!messageText || messageText.length > 500) {
                 return sendJson(response, 400, { error: 'Messages must be between 1 and 500 characters.' });
             }
-            const message = { id: Date.now(), username, text: messageText, createdAt: new Date().toISOString() };
-            const messages = [...readPublicMessages(), message].slice(-500);
             const users = readUsers();
             const user = users.find((entry) => entry.username === username);
+            ensureCosmetics(user);
+            const chatColor = cosmeticById('chatColors', user.equipped.chatColor);
+            const message = {
+                id: Date.now(),
+                username,
+                text: messageText,
+                color: chatColor ? (chatColor.visual?.primary || '#edf9ff') : '#edf9ff',
+                chatColor: user.equipped.chatColor || 'classic',
+                createdAt: new Date().toISOString()
+            };
+            const messages = [...readPublicMessages(), message].slice(-500);
             addExperience(user, 5);
             writeUsers(users);
             writePublicMessages(messages);

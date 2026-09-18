@@ -4,5 +4,13 @@
     "username": "amalakarus",
     "text": "hello",
     "createdAt": "2026-09-17T14:35:43.836Z"
+  },
+  {
+    "id": 1789742087713,
+    "username": "Aidan",
+    "text": "hi",
+    "color": "#ffffff",
+    "chatColor": "galaxy",
+    "createdAt": "2026-09-18T14:34:47.713Z"
   }
 ]

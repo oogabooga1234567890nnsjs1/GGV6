@@ -16,6 +16,11 @@ function addMessages(messages) {
         meta.textContent = `${message.username} • ${new Date(message.createdAt).toLocaleString()}`;
         const body = document.createElement('p');
         body.textContent = message.text;
+        body.style.color = message.color || '#edf9ff';
+        if (message.chatColor === 'galaxy') {
+            body.classList.add('chat-galaxy');
+            body.dataset.chatText = message.text;
+        }
         item.append(meta, body);
         messagesElement.appendChild(item);
         lastMessageId = Math.max(lastMessageId, message.id);

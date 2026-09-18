@@ -56,12 +56,33 @@
                         <input id="avatar-color" name="avatarColor" type="color" value="#70f7ff">
                         <span id="color-value">#70f7ff</span>
                     </div>
-                    <label for="name-style">Name style</label>
-                    <select id="name-style" name="nameStyle"></select>
-                    <label for="avatar-style">Avatar style</label>
-                    <select id="avatar-style" name="avatarStyle"></select>
-                    <label for="banner-style">Profile banner</label>
-                    <select id="banner-style" name="bannerStyle"></select>
+                    <div class="cosmetic-section">
+                        <div class="cosmetic-section-heading">
+                            <div>
+                                <p class="eyebrow">Loadout</p>
+                                <h3>Cosmetic style</h3>
+                            </div>
+                            <span class="cosmetic-live">Live preview</span>
+                        </div>
+                        <div class="cosmetic-grid">
+                            <div class="cosmetic-field cosmetic-name">
+                                <label for="name-style"><span class="cosmetic-icon">Aa</span>Name style</label>
+                                <select id="name-style" name="nameStyle"></select>
+                            </div>
+                            <div class="cosmetic-field cosmetic-avatar">
+                                <label for="avatar-style"><span class="cosmetic-icon">◉</span>Avatar style</label>
+                                <select id="avatar-style" name="avatarStyle"></select>
+                            </div>
+                            <div class="cosmetic-field cosmetic-banner">
+                                <label for="banner-style"><span class="cosmetic-icon">▰</span>Profile banner</label>
+                                <select id="banner-style" name="bannerStyle"></select>
+                            </div>
+                            <div class="cosmetic-field cosmetic-chat">
+                                <label for="chat-color"><span class="cosmetic-icon">✦</span>Chat color</label>
+                                <select id="chat-color" name="chatColor"></select>
+                            </div>
+                        </div>
+                    </div>
                     <button class="primary-button" type="submit" id="save-button">Save profile</button>
                     <p class="status" id="profile-status" role="status" aria-live="polite"></p>
                 </form>

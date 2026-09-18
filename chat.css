@@ -18,6 +18,8 @@ h1 { margin: 0; font-size: clamp(2.2rem, 7vw, 4rem); letter-spacing: .05em; back
 .message { padding: .8rem 1rem; border: 1px solid rgba(112,247,255,.12); border-radius: 12px; background: rgba(255,255,255,.045); }
 .message-meta { color: var(--cyan); font-size: .75rem; font-weight: 700; }
 .message p { margin: .4rem 0 0; color: var(--text); line-height: 1.5; overflow-wrap: anywhere; }
+.message p.chat-galaxy { position: relative; color: #03050b !important; -webkit-text-fill-color: #03050b; text-shadow: 0 0 3px #ffffff, 0 0 9px rgba(255,255,255,.95), 0 0 18px rgba(139,215,255,.7); }
+.message p.chat-galaxy::after { content: attr(data-chat-text); position: absolute; inset: 0; color: transparent; -webkit-text-fill-color: transparent; background-image: radial-gradient(circle, #ffffff 0 1px, transparent 1.8px), radial-gradient(circle, #ffffff 0 1.4px, transparent 2px); background-size: 18px 18px, 31px 31px; background-position: -30px 0, -12px 5px; -webkit-background-clip: text; background-clip: text; text-shadow: 0 0 5px #ffffff, 0 0 11px #ffffff; animation: galaxyChatStars 2.8s linear infinite; pointer-events: none; }
 .message-form { display: flex; gap: .6rem; border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; }
 .message-form input { min-width: 0; flex: 1; padding: .9rem 1rem; border: 1px solid rgba(112,247,255,.2); border-radius: 10px; outline: none; color: var(--text); background: rgba(0,0,0,.25); font: inherit; }
 .message-form input:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(112,247,255,.12); }
@@ -26,4 +28,5 @@ h1 { margin: 0; font-size: clamp(2.2rem, 7vw, 4rem); letter-spacing: .05em; back
 .status { min-height: 1.2em; margin: .7rem 0 0; color: #ff9eae; text-align: center; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 @keyframes shift { 0%, 100% { background-position: 0%; } 50% { background-position: 100%; } }
+@keyframes galaxyChatStars { from { background-position: -30px 0, -12px 5px; } to { background-position: 30px 0, 20px 5px; } }
 @media (max-width: 600px) { .chat-header { align-items: start; flex-direction: column; } .message-form { flex-direction: column; } .message-form button { min-height: 44px; } }
