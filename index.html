@@ -23,19 +23,23 @@
 
     <main class="page-shell">
         <aside class="arcade-sidebar" aria-label="Arcade navigation">
+            <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-expanded="true" aria-controls="arcade-sidebar-content">
+                <span aria-hidden="true">‹</span><b>Collapse sidebar</b>
+            </button>
+            <div id="arcade-sidebar-content">
             <div class="sidebar-heading">
                 <p class="eyebrow">GGV6</p>
                 <strong>Arcade control</strong>
             </div>
             <nav class="button-row" aria-label="Game links">
-                <a href="drive-mad.html" class="cookie-btn game-link" data-game="Drive Mad">Drive Mad <span class="favorite-mark" aria-hidden="true">☆</span></a>
-                <a href="Your-Only-Move-is-Hustle/index.html" class="cookie-btn game-link" data-game="Your Only Move is Hustle">Your Only Move is Hustle <span class="favorite-mark" aria-hidden="true">☆</span></a>
-                <a href="staff.html" class="cookie-btn staff-btn">Creator</a>
-                <a href="public-chat.html" class="cookie-btn public-chat-btn">Public Chat</a>
-                <a href="chat.html" id="staff-chat-link" class="cookie-btn chat-btn owner-only" hidden>Staff Chat</a>
-                <a href="store.html" class="cookie-btn store-btn">Mystery Store</a>
-                <a href="owner.html" id="owner-link" class="cookie-btn owner-btn owner-only" hidden>Owner Commands</a>
-                <a href="auth.html" class="cookie-btn account-btn">Log in / Sign up</a>
+                <a href="drive-mad.html" class="cookie-btn game-link" data-short="DM" data-game="Drive Mad">Drive Mad <span class="favorite-mark" aria-hidden="true">☆</span></a>
+                <a href="Your-Only-Move-is-Hustle/index.html" class="cookie-btn game-link" data-short="YM" data-game="Your Only Move is Hustle">Your Only Move is Hustle <span class="favorite-mark" aria-hidden="true">☆</span></a>
+                <a href="staff.html" class="cookie-btn staff-btn" data-short="CR">Creator</a>
+                <a href="public-chat.html" class="cookie-btn public-chat-btn" data-short="PC">Public Chat</a>
+                <a href="chat.html" id="staff-chat-link" class="cookie-btn chat-btn owner-only" data-short="SC" hidden>Staff Chat</a>
+                <a href="store.html" class="cookie-btn store-btn" data-short="ST">Mystery Store</a>
+                <a href="owner.html" id="owner-link" class="cookie-btn owner-btn owner-only" data-short="OC" hidden>Owner Commands</a>
+                <a href="auth.html" class="cookie-btn account-btn" data-short="AC">Log in / Sign up</a>
             </nav>
             <section class="arcade-tools" aria-label="Arcade tools">
                 <label class="search-box" for="game-search">
@@ -43,14 +47,15 @@
                     <input id="game-search" type="search" placeholder="Search..." autocomplete="off">
                 </label>
                 <div class="tool-actions">
-                    <button type="button" class="tool-button" id="random-game">Random game</button>
-                    <button type="button" class="tool-button" id="copy-arcade">Copy link</button>
-                    <button type="button" class="tool-button" id="theme-toggle">Focus theme</button>
-                    <button type="button" class="tool-button" id="motion-toggle">Reduce motion</button>
-                    <button type="button" class="tool-button logout-button" id="logout-button">Log out</button>
+                    <button type="button" class="tool-button" id="random-game" data-short="R">Random game</button>
+                    <button type="button" class="tool-button" id="copy-arcade" data-short="CP">Copy link</button>
+                    <button type="button" class="tool-button" id="theme-toggle" data-short="FT">Focus theme</button>
+                    <button type="button" class="tool-button" id="motion-toggle" data-short="RM">Reduce motion</button>
+                    <button type="button" class="tool-button logout-button" id="logout-button" data-short="LO">Log out</button>
                 </div>
                 <p class="tool-status" id="tool-status" role="status" aria-live="polite"></p>
             </section>
+            </div>
         </aside>
 
         <section class="arcade-main">

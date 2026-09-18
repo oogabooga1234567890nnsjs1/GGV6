@@ -14,6 +14,8 @@ const homeLevel = document.querySelector('#home-level');
 const homeCredits = document.querySelector('#home-credits');
 const homeXpLabel = document.querySelector('#home-xp-label');
 const homeXpBar = document.querySelector('#home-xp-bar');
+const pageShell = document.querySelector('.page-shell');
+const sidebarToggle = document.querySelector('#sidebar-toggle');
 const favoritesKey = 'ggv6-favorites';
 const recentKey = 'ggv6-recent-game';
 
@@ -26,6 +28,29 @@ function setStatus(message, isError = false) {
     toolStatus.className = `tool-status${isError ? ' error' : ''}`;
     window.clearTimeout(setStatus.timer);
     setStatus.timer = window.setTimeout(() => { toolStatus.textContent = ''; }, 3000);
+}
+
+function updateSidebarState(collapsed) {
+    pageShell.classList.toggle('sidebar-collapsed', collapsed);
+    pageShell.classList.remove('sidebar-hover-open');
+    sidebarToggle.setAttribute('aria-expanded', String(!collapsed));
+    sidebarToggle.querySelector('span').textContent = collapsed ? '›' : '‹';
+    sidebarToggle.querySelector('b').textContent = collapsed ? 'Expand sidebar' : 'Collapse sidebar';
+    localStorage.setItem('ggv6-sidebar-collapsed', String(collapsed));
+}
+
+function handleSidebarHover(event) {
+    const edgeThreshold = 34;
+    const shouldOpen = event.clientX <= edgeThreshold;
+    pageShell.classList.toggle('sidebar-hover-open', shouldOpen);
+    if (shouldOpen) {
+        pageShell.classList.remove('sidebar-collapsed');
+        sidebarToggle.setAttribute('aria-expanded', 'true');
+    } else if (!sidebarToggle.matches(':hover')) {
+        const collapsed = localStorage.getItem('ggv6-sidebar-collapsed') === 'true';
+        pageShell.classList.toggle('sidebar-collapsed', collapsed);
+        sidebarToggle.setAttribute('aria-expanded', String(!collapsed));
+    }
 }
 
 function renderHomeProfile(profile) {
@@ -68,6 +93,11 @@ gameLinks.forEach((link) => {
         updateFavorites();
     });
 });
+
+sidebarToggle.addEventListener('click', () => updateSidebarState(!pageShell.classList.contains('sidebar-collapsed')));
+document.addEventListener('mousemove', handleSidebarHover);
+document.addEventListener('mouseleave', () => pageShell.classList.remove('sidebar-hover-open'));
+updateSidebarState(localStorage.getItem('ggv6-sidebar-collapsed') === 'true');
 
 searchInput.addEventListener('input', () => {
     const query = searchInput.value.trim().toLowerCase();

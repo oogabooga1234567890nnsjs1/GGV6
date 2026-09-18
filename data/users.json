@@ -177,8 +177,8 @@
     },
     "equipped": {
       "nameStyle": "ascended",
-      "avatarStyle": "ascended",
-      "bannerStyle": "ascended"
+      "avatarStyle": "amethyst-avatar",
+      "bannerStyle": "amethyst-banner"
     },
     "experience": 100000030
   },
